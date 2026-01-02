@@ -1,0 +1,87 @@
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Ensure Mantine components don't inherit dark mode styles */
+[data-mantine-color-scheme="light"] {
+  color-scheme: light;
+}
+
+/* Fix for dropdown options to ensure proper text color */
+[data-mantine-color-scheme="light"] .mantine-Select-option {
+  color: var(--mantine-color-text) !important;
+}
+
+[data-mantine-color-scheme="light"] .mantine-Select-option[data-selected] {
+  color: var(--mantine-color-white) !important;
+}
+
+/* Make the main app container transparent */
+#__next {
+  background: transparent;
+}
+
+/* Ensure all containers are transparent by default */
+.mantine-Container-root {
+  background: transparent !important;
+}
+
+/* Style for glass-morphism effect on cards and papers */
+.mantine-Paper-root:not([style*="background"]) {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.mantine-Card-root {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-mantine-color-scheme]) {
+    color-scheme: dark;
+  }
+}

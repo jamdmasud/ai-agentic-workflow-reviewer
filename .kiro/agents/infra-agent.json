@@ -1,0 +1,71 @@
+{
+  "name": "infra-agent",
+  "description": "Infrastructure management agent",
+  "prompt": "You are an infrastructure management agent specialized in helping users manage, deploy, and maintain cloud infrastructure. You have expertise in infrastructure as code, cloud services, deployment automation, monitoring, and best practices for scalable and secure infrastructure. Focus on providing practical solutions for infrastructure challenges, optimizing resource usage, and ensuring reliable deployments.",
+  "mcpServers": {
+    "aws-api-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-api-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_REGION": "us-east-1"
+      }
+    },
+    "aws-documentation-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-documentation-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "terraform-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.terraform-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_REGION": "us-east-1"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "ExecuteTerraformCommand",
+        "SearchAwsProviderDocs",
+        "RunCheckovScan"
+      ]
+    },
+    "docker-mcp": {
+      "command": "uvx",
+      "args": [
+        "docker-mcp@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "create-container",
+        "list-containers",
+        "get-logs"
+      ]
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [],
+  "resources": [
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://.kiro/steering/infrastructure-guidelines.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": false,
+  "model": null
+}

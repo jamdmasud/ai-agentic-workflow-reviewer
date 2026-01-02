@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Workflow Reviewer - Kiro Hackathon Presentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 60px;
+            box-sizing: border-box;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            page-break-after: always;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .slide h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.8em;
+            color: #FFD700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .slide h3 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+            color: #90EE90;
+        }
+        
+        .slide p, .slide li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 0.8em;
+        }
+        
+        .slide ul {
+            padding-left: 2em;
+        }
+        
+        .slide li {
+            margin-bottom: 0.5em;
+        }
+        
+        .architecture-diagram {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 1.1em;
+            line-height: 1.4;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .metric-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #90EE90;
+        }
+        
+        .code-block {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            margin: 20px 0;
+            overflow-x: auto;
+            min-height: 60px;
+        }
+        
+        .highlight {
+            background: rgba(255,255,0,0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .checkmark {
+            color: #90EE90;
+            font-weight: bold;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .nav-button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .nav-button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .slide-number {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1em;
+        }
+        
+        @media print {
+            .slide {
+                display: flex !important;
+                page-break-after: always;
+            }
+            .navigation, .slide-number {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title Slide -->
+<div class="slide active">
+    <h1>Agentic Workflow Reviewer</h1>
+    <p style="text-align: center; font-size: 1.8em; margin-bottom: 1em;">
+        AI-Powered Multi-Agent Workflow Analysis & Optimization
+    </p>
+    <p style="text-align: center; font-size: 1.4em; color: #FFD700;">
+        Built with Kiro.dev
+    </p>
+    <p style="text-align: center; font-size: 1.2em; margin-top: 2em;">
+        Kiro Hackathon • January 2026
+    </p>
+</div>
+
+<!-- Slide 2: Problem Statement & Vision -->
+<div class="slide">
+    <h2>Problem Statement & Vision</h2>
+    
+    <h3>The Challenge</h3>
+    <ul>
+        <li>DevOps teams struggle with complex workflow optimization</li>
+        <li>Manual review processes are time-consuming and error-prone</li>
+        <li>Different optimization goals require different expertise</li>
+        <li>No unified system for comprehensive workflow analysis</li>
+    </ul>
+    
+    <h3>Why Agents + Kiro?</h3>
+    <ul>
+        <li><span class="highlight">Decomposition</span>: Complex analysis → specialized agents</li>
+        <li><span class="highlight">Expertise</span>: Each agent focuses on domain knowledge</li>
+        <li><span class="highlight">Scalability</span>: Parallel processing + intelligent caching</li>
+        <li><span class="highlight">Human-in-the-loop</span>: Interactive goal changes</li>
+    </ul>
+</div>
+
+<!-- Slide 3: Multi-Agent Architecture -->
+<div class="slide">
+    <h2>Multi-Agent System Architecture</h2>
+    
+    <div class="architecture-diagram">
+        <img src="architecture_diagram.png" alt="Multi-Agent System Architecture Diagram" style="width:100%; border-radius:8px;height: 80vh; object-fit: contain;">
+    </div>
+</div>
+
+<!-- Slide 4: Kiro Features Leveraged  -->
+<div class="slide">
+    <h2>Kiro Features Leveraged</h2>
+    
+    <h3><span class="checkmark">✅</span> Comprehensive Kiro Integration</h3>
+    
+    <div class="metrics-grid">
+        <div>
+            <h3>Specs & Requirements</h3>
+            <ul>
+                <li>Formal requirements.md, design.md, tasks.md</li>
+                <li>Property-based testing specifications</li>
+                <li>Incremental development tracking</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Agent Orchestration</h3>
+            <ul>
+                <li>4 specialized AI agents</li>
+                <li>Sequential execution with data flow</li>
+                <li>Error handling & graceful degradation</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Workflow Automation</h3>
+            <ul>
+                <li>Intelligent caching (2.8x performance)</li>
+                <li>Goal-specific re-analysis</li>
+                <li>Human-in-the-loop feedback</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Development Tools</h3>
+            <ul>
+                <li>TypeScript integration</li>
+                <li>Jest + property-based testing</li>
+                <li>Next.js + Mantine UI</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Agentic Design Patterns -->
+<div class="slide">
+    <h2>Agentic Design Patterns</h2>
+    
+    <h3>Task Decomposition</h3>
+    <ul>
+        <li><strong>Parser Agent</strong>: Format detection & structure extraction</li>
+        <li><strong>Risk Analyzer</strong>: SPOF detection, retry analysis</li>
+        <li><strong>Optimization Agent</strong>: Goal-specific improvements</li>
+        <li><strong>Critic Agent</strong>: Assumption challenging</li>
+    </ul>
+    
+    <h3>Tool Usage & Integration</h3>
+    <ul>
+        <li>Multi-format Support: JSON, YAML, text parsing</li>
+        <li>Intelligent Caching: Component-level with TTL</li>
+        <li>Performance: <span class="highlight">25%+ speedup</span> for re-analysis</li>
+        <li>Error Recovery: Network handling with retry</li>
+    </ul>
+    
+    <h3>Feedback Loops</h3>
+    <ul>
+        <li>Interactive Goal Changes: Real-time re-analysis</li>
+        <li>Performance Metrics: Cache hits & timing</li>
+        <li>Validation Guidance: Context-aware errors</li>
+    </ul>
+</div>
+
+<!-- Slide 6: Technical Implementation -->
+<div class="slide">
+    <h2>Technical Implementation </h2>
+    
+    <h3><span class="checkmark">✅</span> Working End-to-End Prototype</h3>
+    <ul>
+        <li>Web UI with workflow input & results display</li>
+        <li>Multi-agent analysis pipeline</li>
+        <li>Goal-specific optimization (3 goals)</li>
+        <li>Intelligent caching & performance optimization</li>
+        <li>Comprehensive error handling</li>
+    </ul>
+    
+    <h3>Architecture Quality</h3>
+    <div class="code-block">
+// Goal-specific analysis parameters
+interface GoalParameters {
+  reliability: { redundancyWeight: 0.8, faultToleranceWeight: 0.9 }
+  cost: { resourceEfficiencyWeight: 0.9, serviceConsolidationWeight: 0.8 }
+  simplicity: { architecturalComplexityWeight: 0.8, dependencyCountWeight: 0.9 }
+}
+    </div>
+    
+    <ul>
+        <li><strong>Type Safety</strong>: Comprehensive TypeScript interfaces</li>
+        <li><strong>Performance</strong>: <span class="highlight">2.8x speedup</span> with intelligent caching</li>
+        <li><strong>Testing</strong>: 10 property-based tests with 1000+ validations</li>
+    </ul>
+</div>
+
+<!-- Slide 7: User Experience & Demo  -->
+<div class="slide">
+    <h2>User Experience & Demo</h2>
+    
+    <h3>Simple, Coherent UX Flow</h3>
+    <ol>
+        <li><strong>Input</strong>: Paste workflow + select goal</li>
+        <li><strong>Analysis</strong>: AI agents analyze with progress</li>
+        <li><strong>Results</strong>: Organized risks, bottlenecks, improvements</li>
+        <li><strong>Iteration</strong>: Change goals for different perspectives</li>
+    </ol>
+    
+    <h3>Live Demo Scenario</h3>
+    <div class="code-block">
+📝 Submit CI/CD Pipeline → Parser extracts stages
+🔍 Risk Analysis → Identifies single points of failure  
+⚡ Optimization → Suggests parallel execution
+🤔 Criticism → Challenges over-complex monitoring
+🎯 Goal Change → Re-analyze for cost optimization
+📊 Performance → <span class="highlight">2.8x faster</span> with cached parsing
+    </div>
+    
+    <h3>Clear Documentation</h3>
+    <ul>
+        <li><strong>Setup</strong>: <code>npm install && npm run dev</code></li>
+        <li><strong>Usage</strong>: Web interface at localhost:3000</li>
+        <li><strong>Architecture</strong>: Multi-agent system with caching</li>
+    </ul>
+</div>
+
+<!-- Slide 8: Kiro Learnings & Reflection -->
+<div class="slide">
+    <h2>Kiro Learnings & Reflection</h2>
+    
+    <div class="metrics-grid">
+        <div>
+            <h3><span class="checkmark">✅</span> What Worked Well</h3>
+            <ul>
+                <li><strong>Specs-Driven Development</strong>: Requirements → Design → Tasks</li>
+                <li><strong>Agent Decomposition</strong>: Clear separation improved maintainability</li>
+                <li><strong>Property-Based Testing</strong>: Caught edge cases early</li>
+                <li><strong>Incremental Development</strong>: Task validation checkpoints</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>🔍 Challenges Discovered</h3>
+            <ul>
+                <li><strong>Complex Mocking</strong>: Property-based tests with agents challenging</li>
+                <li><strong>Performance Testing</strong>: Timeout issues with integration tests</li>
+                <li><strong>State Management</strong>: Coordinating multiple agent results</li>
+                <li><strong>Error Handling</strong>: Network connectivity needed iteration</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>📚 Best Practices Learned</h3>
+    <ul>
+        <li><strong>Start Simple</strong>: Basic functionality first, then add complexity</li>
+        <li><strong>Test Early</strong>: Property-based tests revealed requirements gaps</li>
+        <li><strong>Cache Strategically</strong>: Component-level caching provided significant gains</li>
+        <li><strong>User Feedback</strong>: Real-time progress indicators improved UX</li>
+    </ul>
+</div>
+
+<!-- Slide 9: Impact & Value Proposition -->
+<div class="slide">
+    <h2>Impact & Value Proposition</h2>
+    
+    <h3>Real-World Usefulness</h3>
+    <div class="metrics-grid">
+        <div>
+            <h3>Target Users</h3>
+            <ul>
+                <li>DevOps Engineers optimizing CI/CD</li>
+                <li>Platform Teams reviewing workflows</li>
+                <li>SRE Teams analyzing reliability</li>
+                <li>Development Teams seeking cost optimization</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Concrete Benefits</h3>
+            <ul>
+                <li><strong>Time Savings</strong>: Hours → minutes</li>
+                <li><strong>Multi-Perspective</strong>: 3 optimization goals</li>
+                <li><strong>Learning Tool</strong>: Explains reasoning</li>
+                <li><strong>Iterative</strong>: Easy goal changes</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>Production Readiness Path</h3>
+    <ul>
+        <li><strong>Phase 1</strong>: Internal DevOps tooling <span class="checkmark">✅</span> (Current)</li>
+        <li><strong>Phase 2</strong>: CI/CD platform integration</li>
+        <li><strong>Phase 3</strong>: Enterprise features (collaboration)</li>
+        <li><strong>Phase 4</strong>: Marketplace integration (Terraform, K8s)</li>
+    </ul>
+</div>
+
+<!-- Slide 10: Next Steps & Future Vision -->
+<div class="slide">
+    <h2>Next Steps & Future Vision</h2>
+    
+    <div class="metrics-grid">
+        <div>
+            <h3>Immediate (Next 2 weeks)</h3>
+            <ul>
+                <li>Enhanced AI Integration</li>
+                <li>More Workflow Types (K8s, Terraform)</li>
+                <li>Visual Workflow Editor</li>
+                <li>Collaboration Features</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Long-term (3-6 months)</h3>
+            <ul>
+                <li>Continuous Learning from feedback</li>
+                <li>Integration Ecosystem</li>
+                <li>Advanced Analytics</li>
+                <li>Enterprise Features</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>Kiro Platform Evolution</h3>
+    <ul>
+        <li><strong>Agent Marketplace</strong>: Share specialized agents</li>
+        <li><strong>Template Library</strong>: Pre-built analysis patterns</li>
+        <li><strong>Community</strong>: Open-source agent development</li>
+        <li><strong>Advanced Orchestration</strong>: Multi-tenant execution</li>
+    </ul>
+</div>
+
+<!-- Slide 11: Technical Metrics & Achievements -->
+<div class="slide">
+    <h2>Technical Metrics & Achievements</h2>
+    
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-number">100%</div>
+            <p>Requirements Complete</p>
+            <p>8 requirements, 40 criteria</p>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-number">2.8x</div>
+            <p>Performance Speedup</p>
+            <p>Intelligent caching</p>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-number">1000+</div>
+            <p>Property Validations</p>
+            <p>10 properties × 100+ iterations</p>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-number">4</div>
+            <p>Specialized Agents</p>
+            <p>Parser, Risk, Optimization, Critic</p>
+        </div>
+    </div>
+    
+    <h3><span class="checkmark">✅</span> Property-Based Testing Coverage</h3>
+    <div class="metrics-grid">
+        <div>
+            <ul>
+                <li><span class="checkmark">✅</span> Input preservation during processing</li>
+                <li><span class="checkmark">✅</span> Parser format consistency</li>
+                <li><span class="checkmark">✅</span> Agent execution sequence</li>
+                <li><span class="checkmark">✅</span> Goal-specific recommendation variation</li>
+                <li><span class="checkmark">✅</span> Result completeness verification</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><span class="checkmark">✅</span> Re-analysis performance optimization</li>
+                <li><span class="checkmark">✅</span> Error handling graceful degradation</li>
+                <li><span class="checkmark">✅</span> Input validation consistency</li>
+                <li><span class="checkmark">✅</span> Goal context propagation</li>
+                <li><span class="checkmark">✅</span> Format-specific parsing correctness</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Thank You & Q&A -->
+<div class="slide">
+    <h1 style="font-size: 3em; margin-bottom: 1em;">Thank You & Q&A</h1>
+    
+    <div class="metrics-grid">
+        <div>
+            <h3>Project Repository</h3>
+            <ul>
+                <li><strong>GitHub</strong>: [Repository URL]</li>
+                <li><strong>Live Demo</strong>: [Deployment URL]</li>
+                <li><strong>Documentation</strong>: README.md</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Key Takeaways</h3>
+            <ul>
+                <li><strong>Agentic Design</strong>: Multi-agent systems excel</li>
+                <li><strong>Kiro Integration</strong>: Specs + workflows + testing</li>
+                <li><strong>Performance Matters</strong>: Intelligent caching transforms UX</li>
+                <li><strong>Iterative Value</strong>: Goal-based re-analysis</li>
+            </ul>
+        </div>
+    </div>
+    
+    <p style="text-align: center; font-size: 1.8em; margin-top: 2em; color: #FFD700;">
+        Questions & Discussion
+    </p>
+    
+    <p style="text-align: center; font-size: 1.3em; margin-top: 1em;">
+        Ready to demonstrate the live system and discuss technical implementation
+    </p>
+</div>
+
+<div class="slide-number">
+    <span id="current-slide">1</span> / 12
+</div>
+
+<div class="navigation">
+    <button class="nav-button" onclick="previousSlide()">← Previous</button>
+    <button class="nav-button" onclick="nextSlide()">Next →</button>
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (n + totalSlides) % totalSlides;
+    slides[currentSlide].classList.add('active');
+    document.getElementById('current-slide').textContent = currentSlide + 1;
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function previousSlide() {
+    showSlide(currentSlide - 1);
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+    } else if (e.key === 'ArrowLeft') {
+        previousSlide();
+    }
+});
+
+// Initialize
+showSlide(0);
+</script>
+
+</body>
+</html>
