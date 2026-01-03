@@ -1,5 +1,48 @@
 {
   "mcpServers": {
- 
+    "sonarqube": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "SONARQUBE_TOKEN",
+        "-e",
+        "SONARQUBE_ORG",
+        "mcp/sonarqube"
+      ],
+      "env": {
+        "SONARQUBE_TOKEN": "f724183373d94dcb7c59710092feab4a311ad32d",
+        "SONARQUBE_ORG": "jamdmasud"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "list_enterprises",
+        "change_sonar_issue_status",
+        "search_my_sonarqube_projects",
+        "search_sonar_issues_in_projects",
+        "get_project_quality_gate_status",
+        "show_rule",
+        "list_rule_repositories",
+        "list_quality_gates",
+        "list_languages",
+        "get_component_measures",
+        "search_metrics",
+        "get_scm_info",
+        "get_raw_source",
+        "create_webhook",
+        "list_webhooks",
+        "list_portfolios",
+        "projects",
+        "system_ping",
+        "issues",
+        "quality_gate_status",
+        "system_status",
+        "measures_component",
+        "system_health",
+        "metrics"
+      ]
+    }
   }
 }

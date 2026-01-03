@@ -74,7 +74,7 @@ export function AIResultsDisplay({
       [section]: !prev[section]
     }));
   };
-
+// get specific color
   const getSeverityColor = (severity: Severity | Priority | 'high' | 'medium' | 'low') => {
     switch (severity) {
       case Severity.CRITICAL:

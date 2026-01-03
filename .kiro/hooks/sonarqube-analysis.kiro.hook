@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "SonarQube Analysis",
+  "description": "Analyzes TypeScript files using SonarQube MCP server for quality metrics and recommendations",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["**/*.ts", "**/*.tsx"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "File saved: ${filePath}. Analyze using SonarQube MCP: 1) Check quality gate status 2) Find critical issues 3) Get quality metrics 4) Provide recommendations for the Agentic Workflow Reviewer."
+  }
+}
