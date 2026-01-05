@@ -13,8 +13,8 @@
         "mcp/sonarqube"
       ],
       "env": {
-        "SONARQUBE_TOKEN": "f724183373d94dcb7c59710092feab4a311ad32d",
-        "SONARQUBE_ORG": "jamdmasud"
+        "SONARQUBE_TOKEN": "${SONARQUBE_TOKEN}",
+        "SONARQUBE_ORG": "${SONARQUBE_ORG}"
       },
       "disabled": false,
       "autoApprove": [
