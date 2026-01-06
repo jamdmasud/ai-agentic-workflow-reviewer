@@ -1,4 +1,4 @@
-# Kiro Hackathon Submission
+# 2026 Hackathon @ Ethos Submission
 
 **Entrant Name:** MD MASUD  
 **Team Name:** Individual Entry  
